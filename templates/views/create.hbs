@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <link rel="stylesheet" type="text/css" href="/css/bracket.css">
+    </head>
+    <body>
+        {{>headers}}
+        <main>
+            <hr>
+            <p>This is where you go to create your brackets.  Simply enter all of the information for your tournament and let TourneyMan do the rest.</p>
+            <form action="" name="builder">
+                Tournament Name:<input type="text" name="tourneyName" size="20"> <br>
+                Participant 1: <input type="text" name="participant1" size="20"> Seed: <input type="text" name="seed1" size="3"><br>
+                Participant 2: <input type="text" name="participant2" size="20"> Seed: <input type="text" name="seed2" size="3"> <br>
+                Participant 3: <input type="text" name="participant3" size="20"> Seed: <input type="text" name="seed3" size="3"> <br>
+                Participant 4: <input type="text" name="participant4" size="20"> Seed: <input type="text" name="seed4" size="3"> <br>
+                Participant 5: <input type="text" name="participant5" size="20"> Seed: <input type="text" name="seed5" size="3"> <br>
+                Participant 6: <input type="text" name="participant6" size="20"> Seed: <input type="text" name="seed6" size="3"> <br>
+                Participant 7: <input type="text" name="participant7" size="20"> Seed: <input type="text" name="seed7" size="3"> <br>
+                Participant 8: <input type="text" name="participant8" size="20"> Seed: <input type="text" name="seed8" size="3"> <br>
+                <hr>
+                <div id="blurb" style="text-align: center;">
+                    Additional Rules
+                </div>
+                Rounds to elimination:<input type="text" size="3"> <br>
+                <input type="radio" value="Random"> Random Order<br>
+                <input type="radio" value="Random"> Seed Order<br>
+                <input type="submit" value="Submit" class="btn">
+            </form>
+        </main>
+    </body>
+</html>

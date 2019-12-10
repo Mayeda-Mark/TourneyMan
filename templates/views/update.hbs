@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <link rel="stylesheet" type="text/css" href="/css/bracket.css">
+    </head>
+    <body>
+        {{>headers}}
+        <main>
+            <hr>
+            <form action="" name="update">
+                Select a round:<Select id="round">
+                    <option value="" selected>-Select-</option>
+                    <option value="1">Round 1</option>
+                    <option value="2">Round 2</option>
+                    <option value="3">Round 3</option>
+                    <option value="4">Round 4</option>
+                </Select>
+                <br>
+                Select winner:<select id="winner">
+                    <option value="" selected>-Select-</option>
+                    <option value="1">Team 1</option>
+                    <option value="2">Team 2</option>
+                </select>
+                <br>
+                Team 1 score: <input type="text" size="3" id="team1Score">
+                <br>
+                Team 2 score: <input type="text" size="3" id="team2Score">
+                <br>
+                <input type="submit" value="Submit" class="btn">
+            </form>
+        </main>
+    </body>
+</html>
