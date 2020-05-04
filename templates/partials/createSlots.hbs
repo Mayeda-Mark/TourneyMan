@@ -1,0 +1,10 @@
+<createSlots>
+    <form action="verifyBracket" name="createSlots" method="POST" id="createSlots">
+        {{#each slots}}
+        Name {{inc @index}}: <input type="text" name="slots[{{@index}}][name]" maxlength="20" size="21" value={{this.name}}>
+        <br>
+        {{/each}}
+        <input type="hidden" name="tourneyId" value={{tourneyId}}>
+        <button type="submit" form="createSlots" class="btn">Submit</button>
+    </form>
+</createSlots>

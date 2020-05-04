@@ -1,0 +1,23 @@
+<bracketInfo>
+        Tournament Name:<input type="text" size="20" name="tourneyName" value={{tourneyInfo.bracketname}}> <br>
+        Number of Participants: <input type="text" size="4" name="slots" maxlength="2" value={{tourneyInfo.num_slots}}> <br>
+        {{!-- Rounds of elimination:
+        <fieldset>
+            1<input type="radio" name="elimination" value="1" checked><br>
+            2<input type="radio" name="elimination" value="2" ><br>
+            3<input type="radio" name="elimination" value="3" ><br>
+        </fieldset>
+        Order:
+        <fieldset>
+            Random Order<input type="radio" name="order" value="random" checked><br>
+            Seed Order<input type="radio" name="order" value="seed"><br>
+            Set Order<input type="radio" name="order" value="set"><br>
+        </fieldset>
+        Number of Conferences:
+        <fieldset>
+            0<input type="radio" name="conference" value="0" checked><br>
+            2<input type="radio" name="conference" value="2" ><br>
+            4<input type="radio" name="conference" value="4" ><br>
+        </fieldset> --}}
+        <input type="hidden" name="tourneyId" value={{tourneyId}}>
+</bracketInfo>

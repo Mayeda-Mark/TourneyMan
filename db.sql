@@ -1,57 +1,98 @@
-CREATE TABLE Tournament (
-    id serial  NOT NULL,    
-    Event_name varchar(225)  NOT NULL, 
-    num_participants integer NOT NULL,
-    Num_rounds integer NOT NULL,
-    CONSTRAINT Tournament_pk PRIMARY KEY (id)
+--TABLES
+CREATE TABLE User_info (
+id serial NOT NULL,
+name varchar(255) NOT NULL,
+password VARCHAR(255) NOT NULL,
+CONSTRAINT id PRIMARY KEY (id)
 );
 
-CREATE TABLE Builder (   
-    id serial NOT NULL,
-    Running_total integer,
-    Active_participants integer,
-    Round_num integer,
-    Score integer,
-    Winner boolean,
-    CONSTRAINT Builder_pk PRIMARY KEY (id)
+CREATE TABLE Week (
+id serial NOT NULL,
+Week int NOT NULL,
+bracket_id int NOT NULL,
+CONSTRAINT Week_pk PRIMARY KEY (id)
 );
 
 CREATE TABLE Participant (
-    id serial NOT NULL,
-    Name varchar(225) NOT NULL,
-    Seed integer,
-    CONSTRAINT Participant_pk PRIMARY KEY (id)
+id serial NOT NULL,
+name varchar(255) NOT NULL,
+bracket_id int NOT NULL,
+seed int,
+is_eliminated boolean NOT NULL,
+CONSTRAINT id_pk PRIMARY KEY (id)
 );
 
-INSERT INTO Participant (name, seed)
-VALUES('Test 1', 1);
+CREATE TABLE Bracket (
+id serial NOT NULL,
+bracketName varchar(255) NOT NULL,
+-- owner_id int NOT NULL,
+num_slots int NOT NULL,
+-- num_elimination int NOT NULL,
+-- num_conferences int NOT NULL,
+num_weeks int NOT NULL,
+CONSTRAINT bracket_id_pk PRIMARY KEY (id)
+);
 
-INSERT INTO Participant (name, seed)
-VALUES('Test 2', 2);
+CREATE TABLE Round (
+id serial NOT NULL,
+bracket_id int NOT NULL,
+week_num int NOT NULL,
+participant_1 int,
+participant_2 int,
+score_1 int,
+score_2 int,
+winner int
+);
 
-INSERT INTO Participant (name, seed)
-VALUES('Test 3', 3);
+--FOREIGN KEYS
+ALTER TABLE Bracket ADD CONSTRAINT Bracket_Owner
+FOREIGN KEY (id)
+REFERENCES User_info (id)
+NOT DEFERRABLE
+INITIALLY IMMEDIATE;
 
-INSERT INTO Participant (name, seed)
-VALUES('Test 4', 4);
+ALTER TABLE Round ADD CONSTRAINT week_num
+FOREIGN KEY (week_num)
+REFERENCES Week (id)
+NOT DEFERRABLE
+INITIALLY IMMEDIATE;
 
-INSERT INTO Participant (name, seed)
-VALUES('Test 5', 5);
+ALTER TABLE Round ADD CONSTRAINT Bracket_id
+FOREIGN KEY (bracket_id)
+REFERENCES Bracket (id)
+NOT DEFERRABLE
+INITIALLY IMMEDIATE;
 
-INSERT INTO Participant (name, seed)
-VALUES('Test 6', 6);
+ALTER TABLE Round ADD CONSTRAINT participant_1
+FOREIGN KEY (id)
+REFERENCES Participant (id)
+NOT DEFERRABLE
+INITIALLY IMMEDIATE;
 
-INSERT INTO Participant (name, seed)
-VALUES('Test 8', 8);
+ALTER TABLE Round ADD CONSTRAINT participant_2
+FOREIGN KEY (id)
+REFERENCES Participant (id)
+NOT DEFERRABLE
+INITIALLY IMMEDIATE;
 
-INSERT INTO Participant (name, seed)
-VALUES('Test 8', 8);
+ALTER TABLE Participant ADD CONSTRAINT Bracket_id
+FOREIGN KEY (bracket_id)
+REFERENCES Bracket (id)
+NOT DEFERRABLE
+INITIALLY IMMEDIATE;
 
-INSERT INTO Builder (Round_num)
-VALUES(1);
+--TESTS
+INSERT INTO User_info (name, password)
+VALUES(
+'Mark',
+'password'
+);
 
-INSERT INTO Builder (Round_num)
-VALUES(2);
+INSERT INTO Week (week)
+VALUES (1);
 
-INSERT INTO Builder (Round_num)
-VALUES(3);
+INSERT INTO Participant (name, is_eliminated)
+VALUES ('Test1', false), ('Test2', false);
+
+INSERT INTO Bracket (bracketName, owner_id, num_slots, num_elimination, num_conferences, num_weeks)
+VALUES ('Text Bracket', 1, 2, 1, 1, 1);

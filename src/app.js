@@ -4,6 +4,8 @@ const hbs = require('hbs');
 const router = require('./routers/routers')
 const bodyParser = require('body-parser');
 
+const dbModels = require('./models/dbModels');
+
 hbs.registerHelper('for', function(from, to, incr, block) {
     var accum = '';
     for(var i = from; i < to; i += incr)
@@ -18,6 +20,24 @@ hbs.registerHelper('modulus2', function(index) {
         return false;
     }
 });
+
+hbs.registerHelper('matchIndex', (index1, index2) => {
+    console.log(index1);
+    console.log(index2);
+    return index1 == index2;
+});
+
+hbs.registerHelper("inc", function(value, options)
+{
+    return parseInt(value) + 1;
+});
+
+const init = async () => {
+    await dbModels.UserInfo.sync({force: true});
+    console.log('Tables have synced!');
+}
+
+init();
 
 const app = express();
 const port = process.env.PORT || 5000;

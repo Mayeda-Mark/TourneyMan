@@ -141,3 +141,6 @@ header {
   display: none;
 }
 
+fieldset {
+  border: none;
+}

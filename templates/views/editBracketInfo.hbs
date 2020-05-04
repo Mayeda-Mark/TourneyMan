@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <link rel="stylesheet" type="text/css" href="/css/bracket.css">
+    </head>
+    <body>
+        {{>headers}}
+        <main>
+            <form action="verifyBracketInfo" name="verifyBracketInfo" method="POST" id="verifyBracketInfo">
+                Tournament Name:<input type="text" size="20" value={{tourneyInfo.bracketname}} name="tourneyName"> <br>
+                Number of Participants: <input type="text" value={{tourneyInfo.num_slots}} size="4" name="slots" maxlength="2"> <br>
+                <input type="hidden" name="tourneyId" value={{tourneyId}}>
+                <button type="submit" form="verifyBracketInfo" class="btn">Submit</button>
+            </form>
+        </main>
+    </body>
+</html>

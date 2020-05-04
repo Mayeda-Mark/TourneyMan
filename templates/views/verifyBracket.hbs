@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <link rel="stylesheet" type="text/css" href="/css/bracket.css">
+    </head>
+    <body>
+        {{>headers}}
+        <main>
+            <h2>Does all of this look right?</h2>
+            <p>Tournament Name: {{tourneyInfo.bracketname}}</p>
+            <p>Lenght: {{tourneyInfo.num_weeks}} Rounds</p>
+            <p>Number of Participants: {{tourneyInfo.num_slots}}</p>
+            <form action="editBracketInfo" name="editBracketInfo" id="editBracketInfo">
+                <input type="hidden" name="tourneyId" value={{tourneyId}}>
+                <button type="submit" form="editBracketInfo" class="btn">That's not right</button>
+            </form>
+            <h2>Participants:</h2>
+            {{#each slots}}
+                Name: {{this.name}} <br>
+            {{/each}}
+            <form action="editParticipants" name="editParticipants" id="editParticipants">
+                <input type="hidden" name="tourneyId" value={{tourneyId}}>
+                <button type="submit" form="editParticipants" class="btn">That's not right</button>
+            </form>
+            <form action="home" method="POST" name="confirm" id="confirm">
+                <input type="hidden" name="tourneyId" value={{tourneyId}}>
+                <button type="submit" form="confirm" class="btn">Yeah, looks good!</button>
+            </form>
+        </main>
+    </body>
+</html>
